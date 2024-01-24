@@ -1,3 +1,14 @@
 zenml init
 zenml downgrade
 zenml up --blocker
+zenml integration install mlflow -y
+zenml experiment-tracker register mlflow_tracker_customer --flavor=mlflow
+zenml stack list
+zenml disconnect
+zenml stack describe
+zenml model-deployer register mlflow --flavor=mlflow
+zenml stack register mlflow_stack -a default -o default -d mlflow -e mlflow_tracker_customer --set
+
+[MLFLOW]
+print(Client().active_stack.experiment_tracker.get_tracking_uri())
+mlflow ui --backend-store-uri file:C:\Users\saima\AppData\Roaming\zenml\local_stores\3731b567-b81a-4c40-8180-5cfdce2f8451\mlruns

@@ -6,6 +6,7 @@ from src.data_cleaning import DataCleaning, DataDivideStrategy, DataPreProcessSt
 from typing_extensions import Annotated
 from typing import Tuple
 
+
 @step
 def clean_df(df: pd.DataFrame) -> Tuple[
     Annotated[pd.DataFrame, "X_train"],
