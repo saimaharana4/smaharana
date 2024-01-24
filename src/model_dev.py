@@ -23,7 +23,7 @@ class LinearRegressionModel(Model):
         """
         try:
             reg = LinearRegression(**kwargs)
-            reg.fit()
+            reg.fit(X_train, y_train)
             logging.info("Model Training Completed")
             return reg
         except Exception as e:

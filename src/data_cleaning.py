@@ -4,6 +4,7 @@ from abc import ABC, abstractmethod
 import numpy as np
 import pandas as pd 
 from sklearn.model_selection import train_test_split
+from typing import Union
 
 class DataStrategy(ABC):
     """
@@ -22,14 +23,16 @@ class DataPreProcessStrategy(DataStrategy):
         Preprocess data
         """
         try:
-            data = data.drop([
-                "order_approved_at",
-                "order_delivered_carrier_date",
-                "order_delivered_customer_date",
-                "order_estimated_deliverey_date",
-                "order_purchase_timestamp",
-            ],
-            axis =1)
+            data = data.drop(
+                [
+                    "order_approved_at",
+                    "order_delivered_carrier_date",
+                    "order_delivered_customer_date",
+                    "order_estimated_delivery_date",
+                    "order_purchase_timestamp",
+                ],
+                axis=1,
+            )
             data["product_weight_g"].fillna(data["product_weight_g"].median(), inplace=True)
             data["product_length_cm"].fillna(data["product_length_cm"].median(), inplace=True)
             data["product_height_cm"].fillna(data["product_height_cm"].median(), inplace=True)
